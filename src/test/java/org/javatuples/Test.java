@@ -37,8 +37,8 @@ public class Test extends TestCase {
     public void testMain() throws Exception {
         
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade =
-            Decade.with(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10));
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade =
+            Tuple10.with(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10));
 
         List<Integer> decadeList = new ArrayList<Integer>();
         
@@ -47,51 +47,51 @@ public class Test extends TestCase {
             System.out.println(value);
         }
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade2 = 
-            Decade.fromCollection(decadeList); 
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade2 =
+            Tuple10.fromCollection(decadeList);
             
         assertEquals(decade, decade2);
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade3 = 
-            Decade.fromIterable(decadeList);
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade3 =
+            Tuple10.fromIterable(decadeList);
         
         assertEquals(decade, decade3);
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade4 = 
-            Decade.fromIterable(decadeList, 0);
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade4 =
+            Tuple10.fromIterable(decadeList, 0);
         
         assertEquals(decade, decade4);
         
         decadeList.add(Integer.valueOf(100));
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade5 = 
-            Decade.fromIterable(decadeList, 0);
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade5 =
+            Tuple10.fromIterable(decadeList, 0);
         
         assertEquals(decade, decade5);
 
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade100 =
-            Decade.with(Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(100));
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade100 =
+            Tuple10.with(Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(100));
         
-        final Decade<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade6 = 
-            Decade.fromIterable(decadeList, 1);
+        final Tuple10<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> decade6 =
+            Tuple10.fromIterable(decadeList, 1);
         
         assertEquals(decade100, decade6);
 
         
-        final Ennead<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> ennead =
-            Ennead.with(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9));
+        final Tuple9<Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> ennead =
+            Tuple9.with(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9));
 
         System.out.println(ennead.addAt1("Pepito"));
         System.out.println(ennead.add(new Socket()));
      
-        final Sextet<String,Integer,String,String,String,String> sextet =
-            Sextet.with("1.0",Integer.valueOf(2),"3.0","4.0","5.0","6.0");
+        final Tuple6<String,Integer,String,String,String,String> sextet =
+            Tuple6.with("1.0",Integer.valueOf(2),"3.0","4.0","5.0","6.0");
         
         System.out.println(sextet);
         System.out.println(sextet.addAt3("Perico"));
         
-        Pair<String,Object> pair = Pair.with("a", null);
+        Tuple2<String,Object> pair = Tuple2.with("a", null);
         
         final Object o = null;
         assertTrue(pair.contains("a"));
@@ -102,8 +102,8 @@ public class Test extends TestCase {
         
         final byte[] serSextet = SerializationUtils.serialize(sextet);
         System.out.println(Arrays.asList(ArrayUtils.toObject(serSextet)));
-        final Sextet<String,Integer,String,String,String,String> sextetUnSer =
-            (Sextet<String,Integer,String,String,String,String>) SerializationUtils.deserialize(serSextet);
+        final Tuple6<String,Integer,String,String,String,String> sextetUnSer =
+            (Tuple6<String,Integer,String,String,String,String>) SerializationUtils.deserialize(serSextet);
         System.out.println(sextetUnSer);
         
         
@@ -112,18 +112,18 @@ public class Test extends TestCase {
         Integer integ = null;
         Double[] doubleArray = null;
         
-        Triplet<String,Integer,Double[]> triplet = Triplet.with(str, integ, doubleArray); 
+        Tuple3<String,Integer,Double[]> triplet = Tuple3.with(str, integ, doubleArray);
         
         System.out.println(triplet);
 
         
-        Pair<String,Integer> pair1 = Pair.with("hello", Integer.valueOf(23));
-        Quintet<String,Integer,Double,String,String> quintet = 
-            Quintet.with("a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c"); 
+        Tuple2<String,Integer> pair1 = Tuple2.with("hello", Integer.valueOf(23));
+        Tuple5<String,Integer,Double,String,String> quintet =
+            Tuple5.with("a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c");
 
-        Pair<String,Integer> pair2 = new Pair<String,Integer>("hello", Integer.valueOf(23));
-        Quintet<String,Integer,Double,String,String> quintet2 = 
-            new Quintet<String,Integer,Double,String,String>("a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c"); 
+        Tuple2<String,Integer> pair2 = new Tuple2<String,Integer>("hello", Integer.valueOf(23));
+        Tuple5<String,Integer,Double,String,String> quintet2 =
+            new Tuple5<String,Integer,Double,String,String>("a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c");
 
         System.out.println(pair1);
         System.out.println(pair2);
@@ -142,20 +142,20 @@ public class Test extends TestCase {
         
         
         final List<Tuple> tuples = new ArrayList<Tuple>();
-        tuples.add(Quintet.with(0, 87, 21, 2, 2));
-        tuples.add(Quintet.with(0, 1, 1, 4, 1));
-        tuples.add(Quintet.with(0, 1, 1, 4, 0));
-        tuples.add(Quintet.with(0, 1, 1, 4, 2));
-        tuples.add(Quintet.with(24, 12, 99, 0, 14));
-        tuples.add(Quintet.with(24, 12, 84, 4, 2));
-        tuples.add(Quartet.with(24, 12, 84, 4));
-        tuples.add(Quartet.with(24, 12, 84, 3));
-        tuples.add(Quartet.with(24, 12, 84, 0));
-        tuples.add(Quartet.with(25, 2, 84, 0));
-        tuples.add(Quartet.with(22, 12, 84, 9));
-        tuples.add(Sextet.with(0, 0, 0, 0, 0, 0));
-        tuples.add(Sextet.with(0, 0, 0, 2, 0, 0));
-        tuples.add(Sextet.with(0, 87, 21, 2, 1, 0));
+        tuples.add(Tuple5.with(0, 87, 21, 2, 2));
+        tuples.add(Tuple5.with(0, 1, 1, 4, 1));
+        tuples.add(Tuple5.with(0, 1, 1, 4, 0));
+        tuples.add(Tuple5.with(0, 1, 1, 4, 2));
+        tuples.add(Tuple5.with(24, 12, 99, 0, 14));
+        tuples.add(Tuple5.with(24, 12, 84, 4, 2));
+        tuples.add(Tuple4.with(24, 12, 84, 4));
+        tuples.add(Tuple4.with(24, 12, 84, 3));
+        tuples.add(Tuple4.with(24, 12, 84, 0));
+        tuples.add(Tuple4.with(25, 2, 84, 0));
+        tuples.add(Tuple4.with(22, 12, 84, 9));
+        tuples.add(Tuple6.with(0, 0, 0, 0, 0, 0));
+        tuples.add(Tuple6.with(0, 0, 0, 2, 0, 0));
+        tuples.add(Tuple6.with(0, 87, 21, 2, 1, 0));
         
         System.out.println("-");
         for (final Tuple tuple : tuples) {
